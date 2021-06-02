@@ -27,20 +27,6 @@ extensions:
   health_check: {}
   zpages: {}
 exporters:
-  # kafka/traces:
-  #   brokers:
-  #     - 3.143.220.32:9092
-  #   topic: 'otlp_spans'
-  #   protocol_version: 2.0.0
-  # logging:
-  #   loglevel: debug
-  #   sampling_initial: 5
-  #   sampling_thereafter: 200
-  # kafka/metrics:
-  #   brokers:
-  #     - 3.143.220.32:9092
-  #   topic: 'otlp_metrics'
-  #   protocol_version: 2.0.0
   clickhouse:
     datasource: tcp://clickhouse:9000
 
@@ -51,7 +37,3 @@ service:
       receivers: [jaeger, otlp]
       processors: [batch]
       exporters: [clickhouse]
-    # metrics:
-    #   receivers: [otlp]
-    #   processors: [batch]
-    #   exporters: [kafka/metrics]
